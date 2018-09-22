@@ -10,8 +10,8 @@
 
 
 ### Packages Used: 
--Node.js
--body-parser
--express NPM Package
--express-handlebars
--MySQL
+- Node.js
+- body-parser
+- express NPM Package
+- express-handlebars
+- MySQL
