@@ -24,10 +24,11 @@ router.post('/burgers', function(req, res) {
 });
 
 router.put('/burgers/:id', function(req, res) {
-    var condition = req.params.id;
+    var condition = "id = " + req.params.id;
     
     burger.update({
         devoured: true
+        //req.params.devoured//
     }, condition, function(data) {
         res.redirect("/");
     });
