@@ -1,0 +1,22 @@
+h1 {
+    color: Black;
+}
+
+.container {
+    text-align: center;
+    margin-top: 3px;
+}
+
+.devourBtn {
+    color: beige;
+    background-color: black;
+    margin: 5px;
+}
+
+#available {
+    color: green;
+}
+
+#devoured {
+    color: red;
+}

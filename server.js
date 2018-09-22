@@ -7,7 +7,7 @@ var app = express();
 
 app.use(express.static("public"));
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(bodyParser.json());
 
@@ -20,6 +20,8 @@ app.set("view engine", "handlebars");
 var routes = require("./controllers/burgers_controller.js");
 
 app.use(routes);
+
+app.use(express.static("public"));
 
 app.listen(PORT, function() {
     console.log("Server listening on port: " + PORT);
