@@ -4,7 +4,7 @@ var router = express.Router();
 var burger = require('../models/burger.js');
 
 router.get('/', function(req, res) {
-    burger.all(function(data) {
+    burger.selectAll(function(data) {
         var hbsObject = {
             burgers: data
         };
@@ -14,7 +14,7 @@ router.get('/', function(req, res) {
 });
 
 router.post('/burgers', function(req, res) {
-    burger.create([
+    burger.insertOne([
         'burger_name'
     ], [
         req.body.burger_name
@@ -23,15 +23,17 @@ router.post('/burgers', function(req, res) {
     });
 });
 
-router.put('/burgers/:id', function(req, res) {
-    var condition = "id = " + req.params.id;
-    
-    burger.update({
-        devoured: true
-        //req.params.devoured//
-    }, condition, function(data) {
-        res.redirect("/");
-    });
+router.put('/api/burgers/:id', function(req, res) {
+        var condition = "id = " + req.params.id;
+
+        console.log("condition", condition);
+burger.updateOne(condition, function (result) {
+    if (result.changedRows === 0) {
+    return res.status(404).end();
+} else {
+    return res.status(202).end();
+}
+});
 });
 
 module.exports = router;
